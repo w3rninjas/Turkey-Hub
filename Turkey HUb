@@ -29,6 +29,7 @@ end
 function autoOpen()
     while getgenv().autoOpen == true do
         game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("PurchaseEgg","Starter")
+        wait(0.001)
      end
 
 end
