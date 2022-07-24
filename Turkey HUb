@@ -11,6 +11,7 @@ if game.PlaceId == 9711302332 then
     getgenv().selectEgg = "Starter"
     getgenv().autoGroupChest = true
     getgenv().autoBest = true
+    getgenv().autoBestT = true
     
     --Functions
     function autoTap()
@@ -48,6 +49,13 @@ if game.PlaceId == 9711302332 then
     game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("EquipBestPets")
     
     
+    end
+
+    function autoBestT()
+while getgenv().autoBestT == true do
+        game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("EquipBestPets")
+    wait(30)
+end
     end
     -- Tabs
     local AutoTab = Window:MakeTab({
@@ -96,6 +104,15 @@ if game.PlaceId == 9711302332 then
         Callback = function(Value)
             getgenv().AutoRebirth = Value
             autoRebirth()
+        end    
+    })
+
+    AutoTab:AddToggle({
+        Name = "Auto Equip Best Pet",
+        Default = false,
+        Callback = function(Value)
+            getgenv().autoBestT = Value
+            autoBestT()
         end    
     })
     
