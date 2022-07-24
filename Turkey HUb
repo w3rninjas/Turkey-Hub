@@ -6,8 +6,10 @@ local Window = OrionLib:MakeWindow({Name = "Turkey Hub | Clicker Sim", HidePremi
 -- Values
 getgenv().autoTap = true
 getgenv().AutoRebirth = true
+getgenv().selectRebirth = "1"
 getgenv().autoOpen = true
 getgenv().selectEgg = "Starter"
+getgenv().autoGroupChest = true
 
 --Functions
 function autoTap()
@@ -20,7 +22,7 @@ end
 
 function autoRebirth()
     while getgenv().AutoRebirth == true do
-        game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateRebirths:FireServer("BuyRebirths",3)
+        game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateRebirths:FireServer("BuyRebirths",getgenv().selectRebirth)
         wait(0.001)
      end
 
@@ -32,6 +34,10 @@ while getgenv().autoOpen == true do
 game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("PurchaseEgg",getgenv().selectEgg)
     wait(0.001)
 
+end
+function autoGroupChest()
+
+game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateChests:FireServer("CollectReward","Group Chest")
 end
 
 
@@ -52,7 +58,16 @@ local EggTab = Window:MakeTab({
 EggTab:AddDropdown({
 	Name = "Select Egg",
 	Default = "1",
-	Options = {"Starter", "2M", "Premium"},
+	Options = {"Starter", "2M", "Premium", "Iceberg", "Snow"},
+	Callback = function(Value)
+        getgenv().selectEgg = Value
+        print(getgenv().selectEgg)
+	end    
+})
+AutoTab:AddDropdown({
+	Name = "Select Rebirth",
+	Default = "1",
+	Options = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"},
 	Callback = function(Value)
         getgenv().selectEgg = Value
         print(getgenv().selectEgg)
@@ -86,7 +101,13 @@ EggTab:AddToggle({
         autoOpen()
 	end    
 })
-
+-- Buttons
+AutoTab:AddButton({
+	Name = "Collect Group Chest",
+	Callback = function()
+      		autoGroupChest()
+  	end    
+})
 
 
 
