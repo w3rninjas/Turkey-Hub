@@ -1,0 +1,80 @@
+if game.PlaceId == 9711302332 then
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Turkey Hub | Clicker Sim", HidePremium = false, IntroText = "Turkey Hub", SaveConfig = true, ConfigFolder = "OrionTest"})
+
+-- Values
+getgenv().autoTap = true
+getgenv().AutoRebirth = true
+getgenv().autoOpen = true
+
+--Functions
+function autoTap()
+    while getgenv().autoTap == true  do
+        game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateGemUpgrades:FireServer("Tap Capacity","HandleTapActivation","Home")
+        wait(0.001)
+     end
+
+end
+
+function autoRebirth()
+    while getgenv().AutoRebirth == true do
+        game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateRebirths:FireServer("BuyRebirths",3)
+        wait(0.001)
+     end
+
+
+end
+
+function autoOpen()
+    while getgenv().autoOpen == true do
+        game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("PurchaseEgg","Starter")
+     end
+
+end
+
+-- Tabs
+local AutoTab = Window:MakeTab({
+	Name = "AutoFarm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local EggTab = Window:MakeTab({
+	Name = "Eggs",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+-- Toggles
+AutoTab:AddToggle({
+	Name = "Auto Tap",
+	Default = false,
+	Callback = function(Value)
+		getgenv().autoTap = Value
+        autoTap()
+	end    
+})
+
+AutoTab:AddToggle({
+	Name = "Auto Rebirth",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoRebirth = Value
+        autoRebirth()
+	end    
+})
+
+EggTab:AddToggle({
+	Name = "Egg hatch",
+	Default = false,
+	Callback = function(Value)
+		getgenv().autoOpen = Value
+        autoOpen()
+	end    
+})
+
+
+
+
+end
+OrionLib:Init()
