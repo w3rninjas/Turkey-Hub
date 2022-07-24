@@ -64,7 +64,7 @@ if game.PlaceId == 9711302332 then
     EggTab:AddDropdown({
         Name = "Select Egg",
         Default = "1",
-        Options = {"Starter", "2M", "Premium", "Iceberg", "Snow", "Toy", "Brick", "Atlantis", "Trident", "Eruption", "Obsidian"},
+        Options = {"Starter", "2M", "Premium", "Iceberg", "Snow", "Toy", "Brick", "Atlantis", "Trident", "Eruption", "Obsidian", "Asteroid", "Galaxy"},
         Callback = function(Value)
             getgenv().selectEgg = Value
             print(getgenv().selectEgg)
