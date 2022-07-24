@@ -1,206 +1,207 @@
 if game.PlaceId == 9711302332 then
 
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Turkey Hub | Clicker Sim", HidePremium = false, IntroText = "Turkey Hub", SaveConfig = true, ConfigFolder = "OrionTest"})
-
--- Values
-getgenv().autoTap = true
-getgenv().AutoRebirth = true
-getgenv().selectRebirth = "1"
-getgenv().autoOpen = true
-getgenv().selectEgg = "Starter"
-getgenv().autoGroupChest = true
-getgenv().autoBest = true
-
---Functions
-function autoTap()
-    while getgenv().autoTap == true  do
-        game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateGemUpgrades:FireServer("Tap Capacity","HandleTapActivation","Home")
+    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+    local Window = OrionLib:MakeWindow({Name = "Turkey Hub | Clicker Sim", HidePremium = false, IntroText = "Turkey Hub", SaveConfig = true, ConfigFolder = "OrionTest"})
+    
+    -- Values
+    getgenv().autoTap = true
+    getgenv().AutoRebirth = true
+    getgenv().selectRebirth = "1"
+    getgenv().autoOpen = true
+    getgenv().selectEgg = "Starter"
+    getgenv().autoGroupChest = true
+    getgenv().autoBest = true
+    
+    --Functions
+    function autoTap()
+        while getgenv().autoTap == true  do
+            game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateGemUpgrades:FireServer("Tap Capacity","HandleTapActivation","Home")
+            wait(0.001)
+         end
+    
+    end
+    
+    function autoRebirth()
+        while getgenv().AutoRebirth == true do
+            game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateRebirths:FireServer("BuyRebirths",getgenv().selectRebirth)
+            wait(0.001)
+         end
+    
+    
+    end
+    
+    function autoOpen()
+    while getgenv().autoOpen == true do
+    game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("PurchaseEgg",getgenv().selectEgg)
         wait(0.001)
-     end
-
-end
-
-function autoRebirth()
-    while getgenv().AutoRebirth == true do
-        game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateRebirths:FireServer("BuyRebirths",getgenv().selectRebirth)
-        wait(0.001)
-     end
-
-
-end
-
-function autoOpen()
-while getgenv().autoOpen == true do
-game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("PurchaseEgg",getgenv().selectEgg)
-    wait(0.001)
-
-end
-function autoGroupChest()
-
-game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateChests:FireServer("CollectReward","Group Chest")
-end
-
-
-
-end
-function autoBest()
-game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("EquipBestPets")
-
-
-end
--- Tabs
-local AutoTab = Window:MakeTab({
-	Name = "AutoFarm",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-local EggTab = Window:MakeTab({
-	Name = "Eggs",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
--- Dropdowns
-EggTab:AddDropdown({
-	Name = "Select Egg",
-	Default = "1",
-	Options = {"Starter", "2M", "Premium", "Iceberg", "Snow", "Toy", "Brick"},
-	Callback = function(Value)
-        getgenv().selectEgg = Value
-        print(getgenv().selectEgg)
-	end    
-})
-AutoTab:AddDropdown({
-	Name = "Select Rebirth",
-	Default = "1",
-	Options = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"},
-	Callback = function(Value)
-        getgenv().selectEgg = Value
-        print(getgenv().selectEgg)
-	end    
-})
-
--- Toggles
-AutoTab:AddToggle({
-	Name = "Auto Tap",
-	Default = false,
-	Callback = function(Value)
-		getgenv().autoTap = Value
-        autoTap()
-	end    
-})
-
-AutoTab:AddToggle({
-	Name = "Auto Rebirth",
-	Default = false,
-	Callback = function(Value)
-		getgenv().AutoRebirth = Value
-        autoRebirth()
-	end    
-})
-
-EggTab:AddToggle({
-	Name = "Egg hatch",
-	Default = false,
-	Callback = function(Value)
-		getgenv().autoOpen = Value
-        autoOpen()
-	end    
-})
--- Buttons
-AutoTab:AddButton({
-	Name = "Collect Group Chest",
-	Callback = function()
-      		autoGroupChest()
-  	end    
-})
-
-AutoTab:AddButton({
-	Name = "Equip Best Pets",
-	Callback = function()
-      		autoBest()
-  	end    
-})
-
-
-    elseif game.PlaceId == 7268319775 then
-
-        local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-        local Window = OrionLib:MakeWindow({Name = "Turkey Hub", HidePremium = false, IntroText = "Turkey Hub", SaveConfig = true, ConfigFolder = "OrionTest"})
-        
-        
-        
-        -- Values
-        getgenv().selectWeapon = "DragonTail"
-        getgenv(). buyWeapon = true
-        
-        -- Functions
-        function buyWeapon()
-        game:GetService("ReplicatedStorage").MainEvents.WeaponPurchase:FireServer(getgenv().selectWeapon, 0)
-        
-        end
-        
-        -- Tabs
-        local BuyTab = Window:MakeTab({
-            Name = "Free Weapons",
-            Icon = "rbxassetid://4483345998",
-            PremiumOnly = false
-        })
-        
-        -- Toggles
-        
-        -- DropDowns
-        BuyTab:AddDropdown({
-            Name = "Weapons",
-            Default = "1",
-            Options = {"DragonTail", "Loveless", "GaleTooth", "Grand", "SteelTerra", "Fear", "DemonFang"},
-            Callback = function(Value)
-                getgenv().selectWeapon = Value
-                print(getgenv().selectWeapon)
-            end    
-        })
-        
-        -- Buttons
-        
-        BuyTab:AddButton({
-            Name = "Purchase",
-            Callback = function()
-                      buyWeapon()
-              end    
-        })
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-end
-OrionLib:Init()
-
+    
+    end
+    function autoGroupChest()
+    
+    game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateChests:FireServer("CollectReward","Group Chest")
+    end
+    
+    
+    
+    end
+    function autoBest()
+    game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("EquipBestPets")
+    
+    
+    end
+    -- Tabs
+    local AutoTab = Window:MakeTab({
+        Name = "AutoFarm",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+    local EggTab = Window:MakeTab({
+        Name = "Eggs",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+    -- Dropdowns
+    EggTab:AddDropdown({
+        Name = "Select Egg",
+        Default = "1",
+        Options = {"Starter", "2M", "Premium", "Iceberg", "Snow", "Toy", "Brick", "Atlantis", "Trident", "Eruption", "Obsidian"},
+        Callback = function(Value)
+            getgenv().selectEgg = Value
+            print(getgenv().selectEgg)
+        end    
+    })
+    AutoTab:AddDropdown({
+        Name = "Select Rebirth",
+        Default = "1",
+        Options = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"},
+        Callback = function(Value)
+            getgenv().selectEgg = Value
+            print(getgenv().selectEgg)
+        end    
+    })
+    
+    -- Toggles
+    AutoTab:AddToggle({
+        Name = "Auto Tap",
+        Default = false,
+        Callback = function(Value)
+            getgenv().autoTap = Value
+            autoTap()
+        end    
+    })
+    
+    AutoTab:AddToggle({
+        Name = "Auto Rebirth",
+        Default = false,
+        Callback = function(Value)
+            getgenv().AutoRebirth = Value
+            autoRebirth()
+        end    
+    })
+    
+    EggTab:AddToggle({
+        Name = "Egg hatch",
+        Default = false,
+        Callback = function(Value)
+            getgenv().autoOpen = Value
+            autoOpen()
+        end    
+    })
+    -- Buttons
+    AutoTab:AddButton({
+        Name = "Collect Group Chest",
+        Callback = function()
+                  autoGroupChest()
+          end    
+    })
+    
+    AutoTab:AddButton({
+        Name = "Equip Best Pets",
+        Callback = function()
+                  autoBest()
+          end    
+    })
+    
+    
+        elseif game.PlaceId == 7268319775 then
+    
+            local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+            local Window = OrionLib:MakeWindow({Name = "Turkey Hub", HidePremium = false, IntroText = "Turkey Hub", SaveConfig = true, ConfigFolder = "OrionTest"})
+            
+            
+            
+            -- Values
+            getgenv().selectWeapon = "DragonTail"
+            getgenv(). buyWeapon = true
+            
+            -- Functions
+            function buyWeapon()
+            game:GetService("ReplicatedStorage").MainEvents.WeaponPurchase:FireServer(getgenv().selectWeapon, 0)
+            
+            end
+            
+            -- Tabs
+            local BuyTab = Window:MakeTab({
+                Name = "Free Weapons",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+            })
+            
+            -- Toggles
+            
+            -- DropDowns
+            BuyTab:AddDropdown({
+                Name = "Weapons",
+                Default = "1",
+                Options = {"DragonTail", "Loveless", "GaleTooth", "Grand", "SteelTerra", "Fear", "DemonFang"},
+                Callback = function(Value)
+                    getgenv().selectWeapon = Value
+                    print(getgenv().selectWeapon)
+                end    
+            })
+            
+            -- Buttons
+            
+            BuyTab:AddButton({
+                Name = "Purchase",
+                Callback = function()
+                          buyWeapon()
+                  end    
+            })
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+    
+    end
+    OrionLib:Init()
+    
+    
