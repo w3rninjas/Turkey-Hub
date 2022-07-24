@@ -10,6 +10,7 @@ getgenv().selectRebirth = "1"
 getgenv().autoOpen = true
 getgenv().selectEgg = "Starter"
 getgenv().autoGroupChest = true
+getgenv().autoBest = true
 
 --Functions
 function autoTap()
@@ -40,6 +41,11 @@ function autoGroupChest()
 game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdateChests:FireServer("CollectReward","Group Chest")
 end
 
+
+
+end
+function autoBest()
+game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("EquipBestPets")
 
 
 end
@@ -106,6 +112,13 @@ AutoTab:AddButton({
 	Name = "Collect Group Chest",
 	Callback = function()
       		autoGroupChest()
+  	end    
+})
+
+AutoTab:AddButton({
+	Name = "Equip Best Pets",
+	Callback = function()
+      		autoBest()
   	end    
 })
 
