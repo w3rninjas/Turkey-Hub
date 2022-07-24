@@ -64,7 +64,7 @@ local EggTab = Window:MakeTab({
 EggTab:AddDropdown({
 	Name = "Select Egg",
 	Default = "1",
-	Options = {"Starter", "2M", "Premium", "Iceberg", "Snow"},
+	Options = {"Starter", "2M", "Premium", "Iceberg", "Snow", "Toy", "Brick"},
 	Callback = function(Value)
         getgenv().selectEgg = Value
         print(getgenv().selectEgg)
@@ -123,6 +123,84 @@ AutoTab:AddButton({
 })
 
 
+    elseif game.PlaceId == 7268319775 then
+
+        local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+        local Window = OrionLib:MakeWindow({Name = "Turkey Hub", HidePremium = false, IntroText = "Turkey Hub", SaveConfig = true, ConfigFolder = "OrionTest"})
+        
+        
+        
+        -- Values
+        getgenv().selectWeapon = "DragonTail"
+        getgenv(). buyWeapon = true
+        
+        -- Functions
+        function buyWeapon()
+        game:GetService("ReplicatedStorage").MainEvents.WeaponPurchase:FireServer(getgenv().selectWeapon, 0)
+        
+        end
+        
+        -- Tabs
+        local BuyTab = Window:MakeTab({
+            Name = "Free Weapons",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+        })
+        
+        -- Toggles
+        
+        -- DropDowns
+        BuyTab:AddDropdown({
+            Name = "Weapons",
+            Default = "1",
+            Options = {"DragonTail", "Loveless", "GaleTooth", "Grand", "SteelTerra", "Fear", "DemonFang"},
+            Callback = function(Value)
+                getgenv().selectWeapon = Value
+                print(getgenv().selectWeapon)
+            end    
+        })
+        
+        -- Buttons
+        
+        BuyTab:AddButton({
+            Name = "Purchase",
+            Callback = function()
+                      buyWeapon()
+              end    
+        })
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
 end
 OrionLib:Init()
+
