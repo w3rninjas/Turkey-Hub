@@ -7,6 +7,7 @@ local Window = OrionLib:MakeWindow({Name = "Turkey Hub | Clicker Sim", HidePremi
 getgenv().autoTap = true
 getgenv().AutoRebirth = true
 getgenv().autoOpen = true
+getgenv().selectEgg = "Starter"
 
 --Functions
 function autoTap()
@@ -27,13 +28,15 @@ function autoRebirth()
 end
 
 function autoOpen()
-    while getgenv().autoOpen == true do
-        game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("PurchaseEgg","Starter")
-        wait(0.001)
-     end
+while getgenv().autoOpen == true do
+game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("PurchaseEgg",getgenv().selectEgg)
+    wait(0.001)
 
 end
 
+
+
+end
 -- Tabs
 local AutoTab = Window:MakeTab({
 	Name = "AutoFarm",
@@ -44,6 +47,16 @@ local EggTab = Window:MakeTab({
 	Name = "Eggs",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
+})
+-- Dropdowns
+EggTab:AddDropdown({
+	Name = "Select Egg",
+	Default = "1",
+	Options = {"Starter", "2M", "Premium"},
+	Callback = function(Value)
+        getgenv().selectEgg = Value
+        print(getgenv().selectEgg)
+	end    
 })
 
 -- Toggles
