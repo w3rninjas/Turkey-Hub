@@ -72,7 +72,7 @@ end
     EggTab:AddDropdown({
         Name = "Select Egg",
         Default = "1",
-        Options = {"Starter", "2M", "Premium", "Iceberg", "Snow", "Toy", "Brick", "Atlantis", "Trident", "Eruption", "Obsidian", "Asteroid", "Galaxy", "Cybord", "Tech"},
+        Options = {"Starter", "2M", "Premium", "Iceberg", "Snow", "Toy", "Brick", "Atlantis", "Trident", "Eruption", "Obsidian", "Asteroid", "Galaxy", "Cyborg", "Tech"},
         Callback = function(Value)
             getgenv().selectEgg = Value
             print(getgenv().selectEgg)
