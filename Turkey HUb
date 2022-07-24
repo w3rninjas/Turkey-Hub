@@ -12,6 +12,7 @@ if game.PlaceId == 9711302332 then
     getgenv().autoGroupChest = true
     getgenv().autoBest = true
     getgenv().autoBestT = true
+    getgenv().autoEvo = true
     
     --Functions
     function autoTap()
@@ -56,6 +57,16 @@ while getgenv().autoBestT == true do
         game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("EquipBestPets")
     wait(30)
 end
+    end
+
+    function autoEvo()
+        while getgenv().autoEvo do
+            game:GetService("ReplicatedStorage").Shared.Modules.Utilities.NetworkUtility.Events.UpdatePets:FireServer("EvolveAllPets")
+            wait(60)
+         end
+
+
+
     end
     -- Tabs
     local AutoTab = Window:MakeTab({
@@ -124,6 +135,15 @@ end
             autoOpen()
         end    
     })
+    AutoTab:AddToggle({
+        Name = "Auto Evolve",
+        Default = false,
+        Callback = function(Value)
+            getgenv().autoEvo = Value
+            autoEvo()
+        end    
+    })
+
     -- Buttons
     AutoTab:AddButton({
         Name = "Collect Group Chest",
