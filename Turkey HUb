@@ -163,7 +163,7 @@ end
         elseif game.PlaceId == 7268319775 then
     
             local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-            local Window = OrionLib:MakeWindow({Name = "Turkey Hub", HidePremium = false, IntroText = "Turkey Hub", SaveConfig = true, ConfigFolder = "OrionTest"})
+            local Window = OrionLib:MakeWindow({Name = "Turkey Hub | Roll Of Fate", HidePremium = false, IntroText = "Turkey Hub", SaveConfig = true, ConfigFolder = "OrionTest"})
             
             
             
@@ -211,13 +211,124 @@ end
             
             
             
+        elseif game.PlaceId == 6512923934 then
+            
+            local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+            local Window = OrionLib:MakeWindow({Name = "Turkey Hub | Clicking Legends", HidePremium = false, IntroText = "Turkey Hub w3rninjas#8649", SaveConfig = true, ConfigFolder = "OrionTest"})
 
+
+
+            -- Values
+            getgenv().autoClick = true
+            getgenv().infFloppas = true
+            getgenv().infGems = true
+            getgenv().infRebirths = true
+            getgenv().infCapy = true
+
+
+
+            -- Functions
+            function    autoClick()
+                while getgenv().autoClick == true do
+                    workspace.Events.AddClick:FireServer()
+                    wait()
+                 end
+
+
+
+            end
+            function infFloppas()
+                while  getgenv().infFloppas == true do
+                    game:GetService("Players").LocalPlayer.PlayerGui.Main.MainFrame.CodesFrame.RedeemButton["Redeem Button_Script"].FreePet:FireServer(game:GetService("ReplicatedStorage").Code_Folder,"FLOPPA")
+                    wait(0.05)
+                 end
+
+
+            end
+            function infGems()
+                while getgenv().infGems == true do
+                    game:GetService("Players").LocalPlayer.PlayerGui.Main.MainFrame.CodesFrame.RedeemButton["Redeem Button_Script"].Gems:FireServer(game:GetService("ReplicatedStorage").Code_Folder,"FLOPPA")
+                    wait()
+                 end
+
+
+            end
+            function infRebirths()
+                while getgenv().infRebirths == true do
+                game:GetService("Players").LocalPlayer.PlayerGui.Main.MainFrame.CodesFrame.RedeemButton["Redeem Button_Script"].Rebirths:FireServer(game:GetService("ReplicatedStorage").Code_Folder,"FLOPPA")
+                wait()
+                end
+            end
+            function infCapy()
+                while getgenv().infCapy == true do
+                    
+                    game:GetService("Players").LocalPlayer.PlayerGui.Main.MainFrame.CodesFrame.RedeemButton["Redeem Button_Script"].FreePet:FireServer(game:GetService("ReplicatedStorage").Code_Folder,"CAPYBARA")
+                    wait(0.05)
+                 end
+
+
+            end
+
+
+
+            -- Tabs
+            local AutoFTab = Window:MakeTab({
+                Name = "Autofarms",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+            })
+            local MiscTab = Window:MakeTab({
+                Name = "Misc.",
+                Icon = "rbxassetid://4483345998",
+                PremiumOnly = false
+            })
+
+
+
+        -- Toggles
+        AutoFTab:AddToggle({
+            Name = "Autoclick",
+            Default = false,
+            Callback = function(Value)
+                getgenv().autoClick = Value
+                autoClick()
+            end    
+        })
+        MiscTab:AddToggle({
+            Name = "Infinite Floppas",
+            Default = false,
+            Callback = function(Value)
+                getgenv().infFloppas = Value
+                infFloppas()
+            end    
+        })
+        MiscTab:AddToggle({
+            Name = "Infinite Gems",
+            Default = false,
+            Callback = function(Value)
+                getgenv().infGems = Value
+                infGems()
+            end    
+        })
+        MiscTab:AddToggle({
+            Name = "Infinite Rebirths",
+            Default = false,
+            Callback = function(Value)
+                getgenv().infRebirths = Value
+                infRebirths()
+            end    
+        })
+        MiscTab:AddToggle({
+            Name = "Infinite Capybaras",
+            Default = false,
+            Callback = function(Value)
+                getgenv().infCapy = Value
+                infCapy()
+            end    
+        })
             
             
-            
-            
-            
-            
+ 
             
             
             
