@@ -214,7 +214,7 @@ end
         elseif game.PlaceId == 6512923934 then
             
             local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-            local Window = OrionLib:MakeWindow({Name = "Turkey Hub | Clicking Legends", HidePremium = false, IntroText = "Turkey Hub w3rninjas#8649", SaveConfig = true, ConfigFolder = "OrionTest"})
+            local Window = OrionLib:MakeWindow({Name = "Turkey Hub | Ultra Clickers", HidePremium = false, IntroText = "Turkey Hub w3rninjas#8649", SaveConfig = true, ConfigFolder = "OrionTest"})
 
 
 
